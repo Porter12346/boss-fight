@@ -39,14 +39,24 @@
                     </div>
                 </div>
                 <div class="col-3">
-                    <div>
+                    <div role="button" onclick="healPot('Sam')" id="Sam">
+
+                        <div class="image">
+                            <img class="" alt="">
+                        </div>
+
                         <p class="name"></p>
                         <p class="hp"></p>
                         <p class="lvl"></p>
                     </div>
                 </div>
                 <div class="col-3">
-                    <div id="">
+                    <div role="button" onclick="healPot('Jake')" id="Jake">
+
+                        <div class="image">
+                            <img class="" alt="">
+                        </div>
+
                         <p class="name"></p>
                         <p class="hp"></p>
                         <p class="lvl"></p>
@@ -60,31 +70,33 @@
                     <h2>Pac-Man</h2>
                     <img onclick="hitBoss()"
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Pacman.svg/542px-Pacman.svg.png"
-                        alt="pacman" class="img-fluid">
+                        alt="pacman" class="img-fluid boss-sizing">
                 </div>
                 <div class="col-6">
                     <div class="row border">
                         <div class="col-6">
-                            <p onclick="buyHealPot()">Buy Potion</p>
+                            <p role="button" onclick="buyHealPot()">Buy Potion</p>
                         </div>
                         <div class="col-6">
                             <p>20 gold</p>
                         </div>
-                        <div class="col-6">
+                        <div role="button" onclick="buySam()" id="samText" class="col-6">
                             <p>buy sam</p>
                         </div>
-                        <div class="col-6">
+                        <div id="samPrice" class="col-6">
                             <p>50 gold</p>
                         </div>
-                        <div class="col-6">
+                        <div role="button" id="jakeText" onclick="buyJake()" class="col-6">
                             <p>buy jake</p>
                         </div>
-                        <div class="col-6">
+                        <div id="jakePrice" class="col-6">
                             <p>1000 gold</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-2"><button class="btn btn-danger text-dark">Reset</button></div>
+                <div class="col-2">
+                    <p id="goldCount"></p>
+                </div>
             </div>
         </div>
     </main>

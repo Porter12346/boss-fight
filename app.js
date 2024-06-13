@@ -1,7 +1,7 @@
 let bossesDefeated = 0
 let currentGold = 0
 let healPots = 0
-const heroes = [
+let heroes = [
     {
         name: 'Porter',
         type: 'giant',
@@ -9,7 +9,7 @@ const heroes = [
         health: 100,
         maxHealth: 100,
         level: 1,
-        image: "https://neweralive.na/storage/images/2023/may/lloyd-sikeba.jpg"
+        image: "porter.png"
     },
     {
         name: 'Seth',
@@ -18,10 +18,32 @@ const heroes = [
         health: 100,
         maxHealth: 100,
         level: 1,
-        image: "https://neweralive.na/storage/images/2023/may/lloyd-sikeba.jpg"
+        image: "seth.png"
 
     }
 ]
+
+const sam =
+{
+    name: 'Sam',
+    type: 'giant',
+    damage: 15,
+    health: 100,
+    maxHealth: 50,
+    level: 1,
+    image: "https://neweralive.na/storage/images/2023/may/lloyd-sikeba.jpg"
+}
+
+const jake =
+{
+    name: 'Jake',
+    type: 'giant',
+    damage: 0.5,
+    health: 25,
+    maxHealth: 50,
+    level: 5,
+    image: "https://media.licdn.com/dms/image/C4E03AQFBMVT5y1HeZg/profile-displayphoto-shrink_800_800/0/1516991365021?e=1723680000&v=beta&t=Xpjpy57htPBmNm6NZJw6H5QD25mlLe7ANOmjLU1ck-0"
+}
 
 const boss = {
     health: 100,
@@ -36,9 +58,6 @@ function hitBoss() {
         if (hero.health > 0) {
             damage += hero.damage
         }
-
-
-
     });
     console.log(damage)
     boss.health -= damage
@@ -87,6 +106,7 @@ function levelUp(hero) {
     hero.health = hero.maxHealth
     hero.damage *= Math.ceil(hero.level / 4)
     drawHeros()
+    drawGold()
 }
 
 function buyHealPot() {
@@ -95,6 +115,8 @@ function buyHealPot() {
         return
     }
     healPots++
+    currentGold -= 20
+    drawGold()
 }
 
 function healPot(heroName) {
@@ -110,6 +132,7 @@ function healPot(heroName) {
     }
     healPots--
     drawHeros()
+    drawGold()
 }
 
 function drawHeros() {
@@ -124,6 +147,7 @@ function drawHeros() {
         heroLevel.innerHTML = `LVL: ${hero.level}`
         let imageSource = `<img class="img-fluid image-sizing" src="${hero.image}" alt="a man">`
         heroImage.innerHTML = imageSource
+        drawGold()
     });
 
 }
@@ -134,6 +158,37 @@ function bossPercentage() {
     document.getElementById("boss-health-bar").innerHTML = `<div class="progress-bar" id="boss-health-bar" style="width: ${bossHealth}%"></div>`
     return (bossHealth)
 
+}
+
+function buySam() {
+    if (currentGold < 50) {
+        alert('ur broke')
+        return
+    }
+    heroes.push(sam)
+    drawHeros()
+    document.getElementById('samText').style.display = 'none'
+    document.getElementById('samPrice').style.display = 'none'
+    currentGold -= 50
+    drawGold()
+}
+
+
+function buyJake() {
+    if (currentGold < 1000) {
+        alert('ur broke')
+        return
+    }
+    heroes.push(jake)
+    drawHeros()
+    document.getElementById('jakeText').style.display = 'none'
+    document.getElementById('jakePrice').style.display = 'none'
+    currentGold -= 1000
+    drawGold()
+}
+
+function drawGold() {
+    document.getElementById('goldCount').innerText = `GOLD: ${currentGold}`
 }
 
 
