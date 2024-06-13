@@ -8,7 +8,8 @@ const heroes = [
         damage: 5,
         health: 100,
         maxHealth: 100,
-        level: 1
+        level: 1,
+        image: "https://neweralive.na/storage/images/2023/may/lloyd-sikeba.jpg"
     },
     {
         name: 'Seth',
@@ -16,7 +17,9 @@ const heroes = [
         damage: 10,
         health: 100,
         maxHealth: 100,
-        level: 1
+        level: 1,
+        image: "https://neweralive.na/storage/images/2023/may/lloyd-sikeba.jpg"
+
     }
 ]
 
@@ -44,6 +47,7 @@ function hitBoss() {
         killBoss()
     }
     console.log(boss.health)
+    bossPercentage()
 
 }
 
@@ -55,6 +59,7 @@ function bossAttack() {
         }
         console.log(`${hero.name} health: `, hero.health)
         drawHeros()
+
     });
 
 }
@@ -103,6 +108,8 @@ function healPot(heroName) {
     if (hero.health > hero.maxHealth) {
         hero.health = hero.maxHealth
     }
+    healPots--
+    drawHeros()
 }
 
 function drawHeros() {
@@ -115,10 +122,21 @@ function drawHeros() {
         heroName.innerHTML = `Name: ${hero.name}`
         heroHealth.innerHTML = `HP: ${hero.health}`
         heroLevel.innerHTML = `LVL: ${hero.level}`
-        heroImage.innerHTML = `<img src="${hero.image}" alt="">`
+        let imageSource = `<img class="img-fluid image-sizing" src="${hero.image}" alt="a man">`
+        heroImage.innerHTML = imageSource
     });
+
+}
+
+function bossPercentage() {
+    let bossHealth = (boss.health / boss.maxHealth) * 100
+    console.log(bossHealth)
+    document.getElementById("boss-health-bar").innerHTML = `<div class="progress-bar" id="boss-health-bar" style="width: ${bossHealth}%"></div>`
+    return (bossHealth)
+
 }
 
 
 setInterval(bossAttack, 5000)
 drawHeros()
+bossPercentage()

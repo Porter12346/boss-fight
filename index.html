@@ -17,15 +17,22 @@
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-3">
-                    <div onclick="healPot('Porter')" id="Porter">
-                        <img src="" alt="">
+                    <div role="button" onclick="healPot('Porter')" id="Porter">
+
+                        <div class="image">
+                            <img class="" alt="">
+                        </div>
+
                         <p class="name">name</p>
                         <p class="hp">HP:</p>
                         <p class="lvl">LVL:</p>
                     </div>
                 </div>
                 <div class="col-3">
-                    <div onclick="healPot('Seth')" id="Seth">
+                    <div role="button" onclick="healPot('Seth')" id="Seth">
+                        <div class="image">
+                            <img class="" alt="">
+                        </div>
                         <p class="name">name</p>
                         <p class="hp">HP:</p>
                         <p class="lvl">LVL:</p>
@@ -33,20 +40,23 @@
                 </div>
                 <div class="col-3">
                     <div>
-                        <p class="name">name</p>
-                        <p class="hp">HP:</p>
-                        <p class="lvl">LVL:</p>
+                        <p class="name"></p>
+                        <p class="hp"></p>
+                        <p class="lvl"></p>
                     </div>
                 </div>
                 <div class="col-3">
                     <div id="">
-                        <p class="name">name</p>
-                        <p class="hp">HP:</p>
-                        <p class="lvl">LVL:</p>
+                        <p class="name"></p>
+                        <p class="hp"></p>
+                        <p class="lvl"></p>
                     </div>
                 </div>
                 <div class="col-8 border text-center ">
-                    <p>Health bar goes here</p>
+                    <div id="boss-health-bar" class="progress" role="progressbar" aria-label="Basic example"
+                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar" id="boss-health-bar" style="width: 100%"></div>
+                    </div>
                     <h2>Pac-Man</h2>
                     <img onclick="hitBoss()"
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Pacman.svg/542px-Pacman.svg.png"
@@ -55,7 +65,7 @@
                 <div class="col-6">
                     <div class="row border">
                         <div class="col-6">
-                            <p>Buy Potion</p>
+                            <p onclick="buyHealPot()">Buy Potion</p>
                         </div>
                         <div class="col-6">
                             <p>20 gold</p>
